@@ -1,0 +1,17 @@
+{
+    "itemEnums": {
+        "material": ["Wood", "Metal", "Ceramic", "Glass", "Leather"],
+        
+        "measurement": {
+            "unit": {
+                "in": "inches",
+                "cm": "centimeters"
+            },
+            "shape": ["Rectangular", "Circular"]
+        },
+        
+        "condition": {
+            "description": ["Distressed", "Fair", "Good", "Excellent"]
+        }
+    }
+}
