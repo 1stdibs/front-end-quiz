@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './Header.css';
+
 const Header = React.createClass({
 
 	propTypes: {
@@ -8,8 +10,8 @@ const Header = React.createClass({
 
 	render() {
 		return (
-			<header id="main-header-container">
-				<h1 id="main-header">{this.props.title}</h1>
+			<header>
+				<h1>{this.props.title}</h1>
 			</header>
 		);
 	}

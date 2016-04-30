@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './Item.css';
+
 const Item = React.createClass({
 
 	propTypes: {
@@ -11,7 +13,7 @@ const Item = React.createClass({
 	render() {
 		return (
 			<a href="javascript:void(0)">
-				<img src={this.props.imageURI} alt={this.props.description}/>
+				<img src={this.props.imageURI} alt={this.props.description} height="240"/>
 				<span>{this.props.price}</span>
 			</a>
 		);

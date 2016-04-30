@@ -1,0 +1,26 @@
+html {
+	font-family: sans-serif;
+}
+
+body {
+	margin: 0;
+	box-sizing: border-box;
+}
+
+h1 {
+	text-align: center;
+}
+
+ul {
+	padding: 0;
+	margin: 0;
+}
+
+li {
+	list-style-type: none;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}

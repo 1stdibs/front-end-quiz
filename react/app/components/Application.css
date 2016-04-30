@@ -1,0 +1,6 @@
+:local section {
+	width: 100%;
+	max-width: 960px;
+	margin: 0 auto;
+	background-color: rgb(251, 251, 251);
+}

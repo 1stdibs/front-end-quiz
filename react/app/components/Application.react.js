@@ -1,6 +1,8 @@
 import React from 'react';
 import Header from './Header.react';
 
+import './Application.css';
+
 const Routes = {
 	BROWSE: {
 		title: 'Browse page',
@@ -24,10 +26,10 @@ const Application = React.createClass({
 		const route = this.props.route;
 		const Component = route.component;
 		return (
-			<div>
+			<section>
 				<Header title={route.title}/>
 				<Component/>
-			</div>
+			</section>
 		);
 	}
 
