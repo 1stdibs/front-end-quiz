@@ -2,16 +2,14 @@ const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
+    debug: true,
     context: __dirname,
-    devtool: 'cheap-module-eval-source-map',
-    entry: {
-        browse: 'entries/browse.js',
-        item: 'entries/item.js'
-    },
+    devtool: 'source-map',
+	entry: 'main.react.js',
     output: {
         path: path.join(__dirname, '..'),
         publicPath: '/bundle/',
-        filename: '[name].js'
+        filename: 'main.js'
     },
     resolve: {
         root: path.resolve(__dirname + '/../app'),
@@ -24,7 +22,7 @@ module.exports = {
     module: {
         loaders: [
             {
-                test: /\.jsx?$/,
+                test: /\.react\.js?$/,
                 exclude: /node_modules/,
                 loader: 'babel'
             },
