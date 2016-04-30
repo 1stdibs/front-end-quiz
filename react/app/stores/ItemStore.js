@@ -1,176 +1,79 @@
-var Dispatcher = require('../dispatcher/Dispatcher');
-var EventEmitter = require('events').EventEmitter;
-var TodoConstants = require('../constants/TodoConstants');
+import Dispatcher from '../dispatcher/Dispatcher';
+import EventEmitter from 'events';
+import Events from '../constants/events';
+import Actions from '../constants/Actions';
 
-var CHANGE_EVENT = 'change';
+var _items = [];
 
-var _actionMap = {
-	
+const _actionMap = {
+	[Actions.LOAD_ITEMS]: function() {
+		console.log('I should load data here!');
+		_items = [{
+			"title": "Stunning Arturo Pani, Solid Brass Sculptural Coffee Table, Mexico City, 1950",
+			"image": "https:\/\/a.1stdibscdn.com\/archivesE\/upload\/1121189\/f_3906702\/3906702_s.jpg",
+			"price": {
+				"amounts": {
+					"GBP": "\u00a38,185",
+					"USD": "$12,000",
+					"EUR": "\u20ac10.755"
+				},
+				"initial_amounts": null
+			}
+		}, {
+			"title": "Studio-Built Circular Mirror by Ghiro\u0301 Studio",
+			"image": "https:\/\/a.1stdibscdn.com\/archivesE\/upload\/311218\/f_3864112\/IMG_0666_org_s.jpg",
+			"price": {
+				"amounts": {
+					"GBP": "\u00a317,735",
+					"USD": "$26,000",
+					"EUR": "\u20ac23.304"
+				},
+				"initial_amounts": null
+			}
+		}, {
+			"title": "Jules Leleu Rare Pair of Rosewood Armchairs, circa 1929",
+			"image": "https:\/\/a.1stdibscdn.com\/archivesE\/upload\/1121189\/f_3907612\/3907612_s.jpg",
+			"price": {
+				"amounts": {
+					"GBP": "\u00a317,053",
+					"USD": "$25,000",
+					"EUR": "\u20ac22.407"
+				},
+				"initial_amounts": null
+			}
+		}, {
+			"title": "Curved Sofa by Osvaldo Borsani for Arredamenti Borsani",
+			"image": "https:\/\/a.1stdibscdn.com\/archivesE\/upload\/f_9311\/f_3915252\/DSC0741B_s.jpg",
+			"price": {
+				"amounts": {
+					"GBP": "\u00a322,070",
+					"EUR": "\u20ac29.000",
+					"USD": "$32,354"
+				},
+				"initial_amounts": null
+			}
+		}];
+		ItemStore.emitItemsLoadedEvent();
+	}
 };
 
-var _todos = {};
-
-/**
- * Create a TODO item.
- * @param  {string} text The content of the TODO
- */
-function create(text) {
-	// Hand waving here -- not showing how this interacts with XHR or persistent
-	// server-side storage.
-	// Using the current timestamp + random number in place of a real id.
-	var id = (+new Date() + Math.floor(Math.random() * 999999)).toString(36);
-	_todos[id] = {
-		id: id,
-		complete: false,
-		text: text
-	};
-}
-
-/**
- * Update a TODO item.
- * @param  {string} id
- * @param {object} updates An object literal containing only the data to be
- *     updated.
- */
-function update(id, updates) {
-	_todos[id] = assign({}, _todos[id], updates);
-}
-
-/**
- * Update all of the TODO items with the same object.
- * @param  {object} updates An object literal containing only the data to be
- *     updated.
- */
-function updateAll(updates) {
-	for (var id in _todos) {
-		update(id, updates);
-	}
-}
-
-/**
- * Delete a TODO item.
- * @param  {string} id
- */
-function destroy(id) {
-	delete _todos[id];
-}
-
-/**
- * Delete all the completed TODO items.
- */
-function destroyCompleted() {
-	for (var id in _todos) {
-		if (_todos[id].complete) {
-			destroy(id);
-		}
-	}
-}
-
-var TodoStore = Object.assign({}, EventEmitter.prototype, {
-
-	/**
-	 * Tests whether all the remaining TODO items are marked as completed.
-	 * @return {boolean}
-	 */
-	areAllComplete: function() {
-		for (var id in _todos) {
-			if (!_todos[id].complete) {
-				return false;
-			}
-		}
-		return true;
+const ItemStore = window.Object.assign({}, EventEmitter.prototype, {
+	getAllItems() {
+		return _items;
 	},
 
-	/**
-	 * Get the entire collection of TODOs.
-	 * @return {object}
-	 */
-	getAll: function() {
-		return _todos;
+	emitItemsLoadedEvent() {
+		this.emit(Events.ITEMS_LOADED);
 	},
 
-	emitChange: function() {
-		this.emit(CHANGE_EVENT);
-	},
-
-	/**
-	 * @param {function} callback
-	 */
-	addChangeListener: function(callback) {
-		this.on(CHANGE_EVENT, callback);
-	},
-
-	/**
-	 * @param {function} callback
-	 */
-	removeChangeListener: function(callback) {
-		this.removeListener(CHANGE_EVENT, callback);
+	addItemsLoadedListener: function(callback) {
+		this.on(Events.ITEMS_LOADED, callback);
 	}
 });
 
 // Register callback to handle all updates
 Dispatcher.register(function(action) {
-	var text;
-
-	switch (action.actionType) {
-		case TodoConstants.TODO_CREATE:
-			text = action.text.trim();
-			if (text !== '') {
-				create(text);
-				TodoStore.emitChange();
-			}
-			break;
-
-		case TodoConstants.TODO_TOGGLE_COMPLETE_ALL:
-			if (TodoStore.areAllComplete()) {
-				updateAll({
-					complete: false
-				});
-			} else {
-				updateAll({
-					complete: true
-				});
-			}
-			TodoStore.emitChange();
-			break;
-
-		case TodoConstants.TODO_UNDO_COMPLETE:
-			update(action.id, {
-				complete: false
-			});
-			TodoStore.emitChange();
-			break;
-
-		case TodoConstants.TODO_COMPLETE:
-			update(action.id, {
-				complete: true
-			});
-			TodoStore.emitChange();
-			break;
-
-		case TodoConstants.TODO_UPDATE_TEXT:
-			text = action.text.trim();
-			if (text !== '') {
-				update(action.id, {
-					text: text
-				});
-				TodoStore.emitChange();
-			}
-			break;
-
-		case TodoConstants.TODO_DESTROY:
-			destroy(action.id);
-			TodoStore.emitChange();
-			break;
-
-		case TodoConstants.TODO_DESTROY_COMPLETED:
-			destroyCompleted();
-			TodoStore.emitChange();
-			break;
-
-		default:
-			// no op
-	}
+	_actionMap[action.type]();
 });
 
-module.exports = TodoStore;
+module.exports = ItemStore;

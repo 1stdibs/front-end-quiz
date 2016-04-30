@@ -1,3 +1,3 @@
-var Dispatcher = window.require('flux').Dispatcher;
+import Flux from 'flux';
 
-window.module.exports = new Dispatcher();
+module.exports = new Flux.Dispatcher();
