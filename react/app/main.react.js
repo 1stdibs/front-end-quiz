@@ -3,6 +3,6 @@ import ReactDOM from 'react-dom';
 
 import 'styles.css';
 
-import Application from './components/Application.react.js';
+import Application from './components/Application.react';
 
-ReactDOM.render(<Application pageTitle="title"/>, document.getElementById('main-section'));
+ReactDOM.render(<Application/>, document.getElementById('main-section'));
