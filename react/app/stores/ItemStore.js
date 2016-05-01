@@ -49,6 +49,10 @@ const ItemStore = window.Object.assign({}, EventEmitter.prototype, {
 		return _isMoreItemsAvailable;
 	},
 
+	getItemById(id) {
+		return _items.find(item => item.id === id);
+	},
+
 	emitItemsLoadedEvent() {
 		this.emit(Events.ITEMS_LOADED);
 	},
@@ -70,7 +74,19 @@ const ItemStore = window.Object.assign({}, EventEmitter.prototype, {
 	},
 
 	removeItemDetailsLoadedListener(callback) {
-		this.removeListener(Events.ITEMS_LOADED, callback);
+		this.removeListener(Events.ITEM_DETAILS_LOADED, callback);
+	},
+
+	emitFavouriteItemToggledEvent() {
+		this.emit(Events.FAVOURITE_ITEM_TOGGLED);
+	},
+
+	addFavouriteItemToggledListener(callback) {
+		this.on(Events.FAVOURITE_ITEM_TOGGLED, callback);
+	},
+
+	removeFavouriteItemToggledListener(callback) {
+		this.removeListener(Events.FAVOURITE_ITEM_TOGGLED, callback);
 	}
 });
 

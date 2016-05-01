@@ -1,5 +1,6 @@
 const express = require('express');
 const cachedItems = require('../data/items.json');
+const favouriteItems = require('../data/favourites.json');
 
 const mainRouter = express.Router();
 
@@ -30,15 +31,33 @@ mainRouter.get('', (req, res) => {
 	res.render('main', response);
 });
 
+mainRouter.get('/items', (req, res) => {
+    const response = getItems(req.query);
+    res.status(200).json(response);
+});
+
 mainRouter.get('/item/:id', (req, res) => {
     const id = req.params.id;
     const item = getItem(id);
     res.status(200).json(item);
 });
 
-mainRouter.get('/items', (req, res) => {
-	const response = getItems(req.query);
-	res.status(200).json(response);
+mainRouter.get('/item/:id/favourite', (req, res) => {
+    const id = req.params.id;
+
+    if (favouriteItems.hasOwnProperty(id)) {
+        delete favouriteItems[id];
+    } else {
+        favouriteItems[id] = true;
+    }
+
+    const fs = require('fs');
+    fs.writeFileSync('server/data/favourites.json', JSON.stringify(favouriteItems));
+
+    res.status(200).json({
+        id: id,
+        isFavourite: favouriteItems.hasOwnProperty(id)
+    });
 });
 
 module.exports = mainRouter;

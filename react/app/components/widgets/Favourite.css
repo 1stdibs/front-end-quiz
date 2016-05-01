@@ -1,0 +1,20 @@
+.favouriteButton {
+	height: 25px;
+	width: 25px;
+	border: none;
+}
+
+.canFavourite {
+	background: url('../../resources/heart-hollow.png') center no-repeat;
+	background-size: contain;
+}
+
+.isFavourite {
+	background: url('../../resources/heart-fill.png') center no-repeat;
+	background-size: contain;
+}
+
+.canFavourite:hover, .isFavourite:hover {
+	background: url('../../resources/heart-hover.png') center no-repeat;
+	background-size: contain;
+}

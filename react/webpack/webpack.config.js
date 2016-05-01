@@ -5,7 +5,7 @@ module.exports = {
 	debug: true,
 	context: __dirname,
 	devtool: 'source-map',
-	entry: 'main.react.js',
+	entry: 'Main.react.js',
 	output: {
 		path: path.join(__dirname, '..'),
 		publicPath: '/bundle/',

@@ -1,5 +1,5 @@
 import React from 'react';
-import ItemStore from '../../stores/ItemStore';
+import Favourite from '../widgets/Favourite.react';
 import ItemStoreActions from '../../actions/ItemStoreActions';
 
 import styles from './Item.css';
@@ -21,9 +21,10 @@ const Item = React.createClass({
 
 	render() {
 		return (
-			<a href="javascript:void(0)" className={styles.a} onClick={this.itemClickHandler}>
+			<a href='javascript:void(0)' className={styles.a} onClick={this.itemClickHandler}>
 				<img src={this.props.imageURI} alt={this.props.title} className={styles.img}/>
 				<span className={styles.span}>{this.props.price || 'Price Upon Request'}</span>
+				<Favourite id={this.props.id} className={styles.favouriteButton}/>
 			</a>
 		);
 	}

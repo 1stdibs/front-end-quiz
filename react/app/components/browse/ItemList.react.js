@@ -54,7 +54,7 @@ const ItemList = React.createClass({
 		var Button;
 		if (ItemStore.isMoreItemsAvailable()) {
 			Button = (
-				<button type="button" className={styles.button} onClick={this.loadMoreClickHandler}>
+				<button type='button' className={styles.button} onClick={this.loadMoreClickHandler}>
 					Load more
 				</button>
 			);

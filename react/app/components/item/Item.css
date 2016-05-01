@@ -97,3 +97,9 @@
 .button:active {
 	background-color: rgb(239, 235, 222);
 }
+
+.favouriteButton {
+	position: absolute;
+	top: 15px;
+	right: 10px;
+}

@@ -40,7 +40,13 @@ section {
 }
 
 button {
+	border: solid 1px black;
 	padding: 0;
+	background: white;
+}
+
+button:hover {
+	background: white;
 }
 
 .container {

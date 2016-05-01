@@ -27,7 +27,7 @@ const Header = React.createClass({
 		if (RoutingStore.hasHistory()) {
 			backButton = (
 				<nav className={styles.nav}>
-					<a href="javascript:void(0)" onClick={this.goBack} className={styles.backButton}>
+					<a href='javascript:void(0)' onClick={this.goBack} className={styles.backButton}>
 						Home
 					</a>
 				</nav>
