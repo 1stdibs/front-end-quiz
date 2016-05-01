@@ -23,7 +23,7 @@ const Item = React.createClass({
 		return (
 			<a href="javascript:void(0)" className={styles.a} onClick={this.itemClickHandler}>
 				<img src={this.props.imageURI} alt={this.props.title} className={styles.img}/>
-				<span className={styles.span}>{this.props.price || 'N/A'}</span>
+				<span className={styles.span}>{this.props.price || 'Price Upon Request'}</span>
 			</a>
 		);
 	}

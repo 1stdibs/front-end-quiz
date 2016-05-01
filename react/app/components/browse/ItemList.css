@@ -1,7 +1,5 @@
 .container {
-	text-align: center;
-	padding-top: 42px;
-	padding-bottom: 30px;
+	composes: container from '../../generic.css';
 }
 
 .ul {
@@ -12,11 +10,10 @@
 }
 
 .li {
+	composes: box from '../../generic.css';
 	display: inline-block;
 	width: 280px;
 	height: 280px;
-	border-radius: 2px;
-	box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.25);
 	margin: 15px;
 	float: left;
 }
