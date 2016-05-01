@@ -41,9 +41,11 @@ const ItemList = React.createClass({
 		);
 
 		return (
-			<ul className={styles.ul}>
-				{items}
-			</ul>
+			<div className={styles.container}>
+				<ul className={styles.ul}>
+					{items}
+				</ul>
+			</div>
 		);
 	}
 
