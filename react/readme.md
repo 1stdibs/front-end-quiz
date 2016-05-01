@@ -1,49 +1,21 @@
-## 1stdibs.com front-end developer React quiz
+## Comments
 
-Using React and Flux architecture render App with these pages:
-- Browse - all the items on the page, [browse example](./examples/browse.png)
-- Item - detail page with more info about the item, [item example](./examples/item.png)
+Hello!
 
-### Server side notes
-Steps to run local server:
-- `npm install`
-- `npm run dev`
+I have spent about 30% of my time trying to get acquainted with Flux and Webpack. I had trouble getting started, so I made a few tweaks to the initial package so that I would end up in familiar waters.
 
-At this point you should be able to access `localhost:3001` in your browser.
+- The server is now a very simple REST server, it only renders the entry HTML and everything else is loaded via AJAX. Seeing your initial set up I thought that I could perhaps use server side rendering but I decided not to go there. I wouldn't have made it on time.
+- I have added a few plugins here and there. Perhaps they were not necessary but since I was unfamiliar with 70% of the starting package anyway, I hope that's not too big a deal.
 
-*Everything should work with Node `v4.0.0` and up.*
+By no means is my approach optimal or complete. Things I could've done but haven't due to time constraints include:
 
-### Client side notes
-Page entry JavaScript files are located in `app/entries` folder.
+- Internationalization.
+- Extracting certain pieces of repeating logic. E.g. my action handlers are "created dynamically". The method, which performs this initialization should be a generic method somewhere else. I didn't do that since I would need to mess with module loading or come up with something different. That would be the next step in the process.
+- Creating a proper REST service map, similar to what a Spring application might use.
 
-Webpack will compile all your CSS and JS assets.
+Development notes:
 
-### Requirements
-**Browse page:**
-
-- Fetch items data from server side using this endpoint: `[GET] /browse/data`
-- Render items, example [layout](./examples/browse.png)
-- Add `Load More` button, which should fetch additional items from the same endpoint
-
-**Item page:**
-
-- Fetch item data from server side using this endpoint: `[GET] /item/{id}/data`
-- Render item, example [layout](./examples/item.png)
-
-**Bonus points:**
-
-- Add item favoriting:
-  + Item can be added and removed to/from favorites from both pages by clicking on the `heart` icon
-  + Its up to you were you store the data about favorited items (server, db, browser, file or your own solution)
-  + Examples: [favorite on browse](./examples/favorite-browse.png) and [favorite on item](./examples/favorite-item.png)
-- Client side routing: navigating through the app should work using browser history - single page application
-
-**CSS:**
-
-- You can use any framework or just write your own styles. Don't need to totally match given examples
-
-### Tips
-- You can use any [Flux framework](https://github.com/voronianski/flux-comparison)
-- You can require your CSS files in your JavaScript [CSS Modules](https://github.com/css-modules/css-modules) are hooked up to Webpack
-- You can use ES6 as [Babel](https://babeljs.io/) is integrated too
-- You can change Webpack/Node configs as you like
+- I should've used a 3rd party router but I knew that it would have taken me half the day to find my favourite and then set it up. So I wrote something of my own. That's why the browser's back button doesn't work - because it's not a real router. Using one would be the next step.
+- The service calls could have been parts of Actions, but I chose using Stores for that. Probably due to model resemblence.
+- Clearly I don't understand the architecture well enough yet. I see a lot of redundant code from one Store to another, from one Action controller to the next. I think that this can either be greatly simplified or I could easily be doing things wrong.
+- CSS Modules were also new, so the structure in which I have chosen to place my files may not be the best one. Actually, the whole folder structure is questionable, IMO.

@@ -7,13 +7,14 @@ const compiler = webpack(config);
 const app = express();
 const port = process.env.PORT || 3001;
 
-app.use(webpackDevMiddleware(compiler, { publicPath: config.output.publicPath }));
+app.use(webpackDevMiddleware(compiler, {
+	publicPath: config.output.publicPath
+}));
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
-app.use('/', require('./routes/browseRouter'));
-app.use('/item', require('./routes/itemRouter'));
+app.use('/', require('./routes/mainRouter'));
 
-const server = app.listen(port, function () {
-    console.log('Example app listening at localhost:%s', port);
+const server = app.listen(port, function() {
+	console.log('Example app listening at localhost:%s', port);
 });

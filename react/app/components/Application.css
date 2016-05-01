@@ -1,0 +1,9 @@
+.section {
+	width: 100%;
+	max-width: 960px;
+	height: auto;
+	min-height: 100%;
+	margin: 0 auto;
+	background-color: rgb(250, 239, 218);
+	position: relative;
+}
