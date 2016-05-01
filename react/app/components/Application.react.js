@@ -1,55 +1,45 @@
 import React from 'react';
 import Header from './Header.react';
 import ItemStore from '../stores/ItemStore';
+import Routes from '../constants/Routes';
+import RoutingStore from '../stores/RoutingStore';
+import RoutingActions from '../actions/RoutingActions';
 
 import styles from './Application.css';
-
-const Routes = {
-	BROWSE() {
-		const ItemList = require('./browse/ItemList.react');
-		return {
-			header: {
-				title: 'Browse page'
-			},
-			component: <ItemList/>
-		};
-	},
-	ITEM() {
-		const Item = require('./item/Item.react');
-		const currentItem = ItemStore.getCurrentItemDetails();
-		const seller = currentItem.seller || {};
-		return {
-			header: {
-				logo: seller.logo,
-				title: seller.company
-			},
-			component: <Item item={currentItem}/>
-		};
-	}
-};
 
 const Application = React.createClass({
 
 	componentWillMount() {
-		this.executeRoute(Routes.BROWSE);
+		RoutingStore.addRouteExecutedListener(this.onRouteExecuted);
+		RoutingActions.executeRoute(Routes.BROWSE);
 	},
 
 	componentDidMount() {
 		ItemStore.addItemDetailsLoadedListener(this.onItemDetailsLoaded);
 	},
 
-	onItemDetailsLoaded() {
-		this.executeRoute(Routes.ITEM);
+	componentWillUnmount() {
+		ItemStore.removeItemDetailsLoadedListener(this.onItemDetailsLoaded);
+		RoutingStore.removeRouteExecutedListener(this.onRouteExecuted);
 	},
 
-	executeRoute(route) {
+	onItemDetailsLoaded() {
+		RoutingActions.executeRoute(Routes.ITEM);
+	},
+
+	onRouteExecuted(route) {
 		this.setState({
-			route: route()
+			route: RoutingStore.getCurrentRoute()
 		});
 	},
 
 	render() {
-		const route = this.state.route;
+		const route = this.state && this.state.route;
+
+		if (!route) {
+			return false;
+		}
+
 		const Component = route.component;
 		return (
 			<section className={styles.section}>

@@ -53,22 +53,32 @@ const ItemStore = window.Object.assign({}, EventEmitter.prototype, {
 		this.emit(Events.ITEMS_LOADED);
 	},
 
-	addItemsLoadedListener: function(callback) {
+	addItemsLoadedListener(callback) {
 		this.on(Events.ITEMS_LOADED, callback);
+	},
+
+	removeItemsLoadedListener(callback) {
+		this.removeListener(Events.ITEMS_LOADED, callback);
 	},
 
 	emitItemDetailsLoadedEvent() {
 		this.emit(Events.ITEM_DETAILS_LOADED);
 	},
 
-	addItemDetailsLoadedListener: function(callback) {
+	addItemDetailsLoadedListener(callback) {
 		this.on(Events.ITEM_DETAILS_LOADED, callback);
+	},
+
+	removeItemDetailsLoadedListener(callback) {
+		this.removeListener(Events.ITEMS_LOADED, callback);
 	}
 });
 
-// Register callback to handle all updates
 Dispatcher.register(function(action) {
-	_actionMap[action.type](action.params);
+	const handler = _actionMap[action.type];
+	if (handler) {
+		handler(action.params);
+	}
 });
 
 module.exports = ItemStore;

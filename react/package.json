@@ -47,6 +47,7 @@
     "precss": "^1.4.0",
     "style-loader": "^0.13.0",
     "webpack": "^1.12.14",
-    "webpack-dev-middleware": "^1.5.1"
+    "webpack-dev-middleware": "^1.5.1",
+    "url-loader": "^0.5.7"
   }
 }

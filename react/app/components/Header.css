@@ -16,3 +16,16 @@
 .logo {
 	max-height: 26px;
 }
+
+.nav {
+	position: absolute;
+	height: 26px;
+}
+
+.backButton {
+	background: url('../resources/back-arrow.png') 15px center no-repeat;
+	background-size: contain;
+	color: rgb(177, 155, 87);
+	line-height: 26px;
+	padding-left: 30px;
+}

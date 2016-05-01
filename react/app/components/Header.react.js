@@ -1,4 +1,6 @@
 import React from 'react';
+import RoutingActions from '../actions/RoutingActions';
+import RoutingStore from '../stores/RoutingStore';
 
 import styles from './Header.css';
 
@@ -6,6 +8,10 @@ const Header = React.createClass({
 
 	propTypes: {
 		details: React.PropTypes.object.isRequired
+	},
+
+	goBack() {
+		RoutingActions.goBack();
 	},
 
 	render() {
@@ -17,8 +23,20 @@ const Header = React.createClass({
 			headerElement = (<h1 className={styles.h1}>{headerDetails.title}</h1>);
 		}
 
+		var backButton;
+		if (RoutingStore.hasHistory()) {
+			backButton = (
+				<nav className={styles.nav}>
+					<a href="javascript:void(0)" onClick={this.goBack} className={styles.backButton}>
+						Home
+					</a>
+				</nav>
+			);
+		}
+
 		return (
 			<header className={styles.header}>
+				{backButton}
 				{headerElement}
 			</header>
 		);

@@ -14,14 +14,18 @@ function getItemListState() {
 const ItemList = React.createClass({
 
 	getInitialState() {
-		return {
-			items: []
-		};
+		return getItemListState();
 	},
 
 	componentDidMount() {
 		ItemStore.addItemsLoadedListener(this.onItemsLoaded);
-		ItemStoreActions.loadItems();
+		if (this.state.items.length === 0) {
+			ItemStoreActions.loadItems();
+		}
+	},
+
+	componentWillUnmount() {
+		ItemStore.removeItemsLoadedListener(this.onItemsLoaded);
 	},
 
 	onItemsLoaded() {
