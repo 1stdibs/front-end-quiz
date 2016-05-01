@@ -15,7 +15,7 @@ By no means is my approach optimal or complete. Things I could've done but haven
 
 Development notes:
 
-- I should've used a 3rd party router but I knew that it would have taken me a while to find my favourite and then set it up. So I wrote something on my own.
+- I should've used a 3rd party router but I knew that it would have taken me half the day to find my favourite and then set it up. So I wrote something of my own. That's why the browser's back button doesn't work - because it's not a real router. Using one would be the next step.
 - The service calls could have been parts of Actions, but I chose using Stores for that. Probably due to model resemblence.
 - Clearly I don't understand the architecture well enough yet. I see a lot of redundant code from one Store to another, from one Action controller to the next. I think that this can either be greatly simplified or I could easily be doing things wrong.
 - CSS Modules were also new, so the structure in which I have chosen to place my files may not be the best one. Actually, the whole folder structure is questionable, IMO.
