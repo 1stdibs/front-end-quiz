@@ -25,6 +25,11 @@ const Item = React.createClass({
 		FavouriteItemStore.addFavouriteItemToggledListener(this.favouriteItemToggled);
 	},
 
+	componentWillUnmount() {
+		FavouriteItemStore.removeFavouriteItemsLoadedListener(this.favouriteItemsLoaded);
+		FavouriteItemStore.removeFavouriteItemToggledListener(this.favouriteItemToggled);
+	},
+
 	favouriteItemsLoaded() {
 		this.setState(getState(this.props.id));
 	},

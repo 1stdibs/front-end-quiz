@@ -60,6 +60,9 @@ const FavouriteItemStore = window.Object.assign({}, EventEmitter.prototype, {
 	}
 });
 
+// We are goint to have a lof of these. Every single items listens for this event.
+FavouriteItemStore.setMaxListeners(0);
+
 Dispatcher.register(function(action) {
 	const handler = _actionMap[action.type];
 	if (handler) {
