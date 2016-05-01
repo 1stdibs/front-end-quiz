@@ -6,15 +6,15 @@ const Item = React.createClass({
 
 	propTypes: {
 		imageURI: React.PropTypes.string.isRequired,
-		price: React.PropTypes.string.isRequired,
-		description: React.PropTypes.string
+		price: React.PropTypes.string,
+		title: React.PropTypes.string
 	},
 
 	render() {
 		return (
 			<a href="javascript:void(0)" className={styles.a}>
-				<img src={this.props.imageURI} alt={this.props.description} className={styles.img}/>
-				<span className={styles.span}>{this.props.price}</span>
+				<img src={this.props.imageURI} alt={this.props.title} className={styles.img}/>
+				<span className={styles.span}>{this.props.price || 'N/A'}</span>
 			</a>
 		);
 	}
