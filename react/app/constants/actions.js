@@ -3,6 +3,7 @@ const Actions = {
 	LOAD_ITEMS: Symbol(),
 	LOAD_ITEM_DETAILS: Symbol(),
 	TOGGLE_FAVOURITE_ITEM: Symbol(),
+	LOAD_FAVOURITE_ITEMS: Symbol(),
 
 	/* Routing */
 	GO_BACK: Symbol(),

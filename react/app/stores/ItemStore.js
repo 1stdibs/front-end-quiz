@@ -29,7 +29,7 @@ const _actionMap = {
 			);
 		}
 
-		Promise.all(promises).then(() => {
+		window.Promise.all(promises).then(() => {
 			_currentItemDetails = _itemDetails[params.id];
 			ItemStore.emitItemDetailsLoadedEvent();
 		});

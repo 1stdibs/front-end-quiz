@@ -2,6 +2,7 @@ import React from 'react';
 import Item from './Item.react';
 import ItemStore from '../../stores/ItemStore';
 import ItemStoreActions from '../../actions/ItemStoreActions';
+import FavouriteItemActions from '../../actions/FavouriteItemActions';
 
 import styles from './ItemList.css';
 
@@ -21,6 +22,7 @@ const ItemList = React.createClass({
 		ItemStore.addItemsLoadedListener(this.onItemsLoaded);
 		if (this.state.items.length === 0) {
 			ItemStoreActions.loadItems();
+			FavouriteItemActions.loadFavouriteItems();
 		}
 	},
 

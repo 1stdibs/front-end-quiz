@@ -21,7 +21,16 @@ const Item = React.createClass({
 	},
 
 	componentDidMount() {
+		FavouriteItemStore.addFavouriteItemsLoadedListener(this.favouriteItemsLoaded);
 		FavouriteItemStore.addFavouriteItemToggledListener(this.favouriteItemToggled);
+	},
+
+	favouriteItemsLoaded() {
+		this.setState(getState(this.props.id));
+	},
+
+	favouriteItemToggled() {
+		this.setState(getState(this.props.id));
 	},
 
 	favouriteItem(event) {
@@ -29,10 +38,6 @@ const Item = React.createClass({
 		FavouriteItemActions.toggleFavouriteItem({
 			id: this.props.id
 		});
-	},
-
-	favouriteItemToggled() {
-		this.setState(getState(this.props.id));
 	},
 
 	render() {

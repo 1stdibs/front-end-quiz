@@ -27,13 +27,17 @@ const getItem = function(itemId) {
 };
 
 mainRouter.get('', (req, res) => {
-	const response = getItems(req.query);
-	res.render('main', response);
+	res.render('main');
 });
 
 mainRouter.get('/items', (req, res) => {
     const response = getItems(req.query);
+    response.favourites = favouriteItems;
     res.status(200).json(response);
+});
+
+mainRouter.get('/items/favourites', (req, res) => {
+    res.status(200).json(favouriteItems);
 });
 
 mainRouter.get('/item/:id', (req, res) => {

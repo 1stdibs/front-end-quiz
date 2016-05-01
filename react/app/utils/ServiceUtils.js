@@ -6,6 +6,8 @@ function _getServiceUrl(serviceName, params) {
 			return `/item/${params.id}`;
 		case 'toggleFavouriteItem':
 			return `/item/${params.id}/favourite`;
+		case 'loadFavouriteItems':
+			return '/items/favourites';
 	}
 }
 

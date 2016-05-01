@@ -7,13 +7,24 @@ import ServiceUtils from '../utils/ServiceUtils';
 const _favouriteItems = new window.Set();
 
 const _actionMap = {
+	[Actions.LOAD_FAVOURITE_ITEMS]: function(params) {
+		const promises = [];
+		if (_favouriteItems.size === 0) {
+			promises.push(ServiceUtils.callService('loadFavouriteItems', params).then((response) => {
+				for (let id in response) {
+					if (response.hasOwnProperty(id)) {
+						_favouriteItems.add(id);
+					}
+				}
+			}));
+		}
+		window.Promise.all(promises).then(() => {
+			FavouriteItemStore.emitFavouriteItemsLoadedEvent();
+		});
+	},
 	[Actions.TOGGLE_FAVOURITE_ITEM]: function(params) {
 		ServiceUtils.callService('toggleFavouriteItem', params).then((response) => {
-			console.log(_favouriteItems);
-			console.log(response.id);
-			console.log(response.isFavourite ? 'add' : 'delete');
 			_favouriteItems[response.isFavourite ? 'add' : 'delete'](response.id);
-			console.log(_favouriteItems);
 			FavouriteItemStore.emitFavouriteItemToggledEvent();
 		});
 	}
@@ -22,6 +33,18 @@ const _actionMap = {
 const FavouriteItemStore = window.Object.assign({}, EventEmitter.prototype, {
 	isItemFavourite(id) {
 		return _favouriteItems.has(id);
+	},
+
+	emitFavouriteItemsLoadedEvent() {
+		this.emit(Events.FAVOURITE_ITEMS_LOADED);
+	},
+
+	addFavouriteItemsLoadedListener(callback) {
+		this.on(Events.FAVOURITE_ITEMS_LOADED, callback);
+	},
+
+	removeFavouriteItemsLoadedListener(callback) {
+		this.removeListener(Events.FAVOURITE_ITEMS_LOADED, callback);
 	},
 
 	emitFavouriteItemToggledEvent() {
