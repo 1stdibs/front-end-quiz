@@ -1,8 +1,8 @@
-:local ul {
+.ul {
 	padding: 10px 15px;
 }
 
-:local li {
+.li {
 	display: inline-block;
 	width: 280px;
 	height: 280px;

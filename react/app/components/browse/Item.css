@@ -1,4 +1,4 @@
-:local a {
+.a {
 	background: white;
 	text-align: center;
 	padding: 0 10px 15px;
@@ -6,8 +6,16 @@
 	height: 100%;
 	width: 100%;
 	box-sizing: border-box;
+	position: relative;
 }
 
-:local span {
-	float: left;
+.span {
+	position: absolute;
+	bottom: 15px;
+	left: 10px;
+}
+
+.img {
+	width: 80%;
+	max-width: 240px;
 }

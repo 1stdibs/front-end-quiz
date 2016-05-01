@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './Item.css';
+import styles from './Item.css';
 
 const Item = React.createClass({
 
@@ -12,9 +12,9 @@ const Item = React.createClass({
 
 	render() {
 		return (
-			<a href="javascript:void(0)">
-				<img src={this.props.imageURI} alt={this.props.description} height="240"/>
-				<span>{this.props.price}</span>
+			<a href="javascript:void(0)" className={styles.a}>
+				<img src={this.props.imageURI} alt={this.props.description} className={styles.img}/>
+				<span className={styles.span}>{this.props.price}</span>
 			</a>
 		);
 	}

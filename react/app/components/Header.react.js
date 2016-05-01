@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './Header.css';
+import styles from './Header.css';
 
 const Header = React.createClass({
 
@@ -10,8 +10,8 @@ const Header = React.createClass({
 
 	render() {
 		return (
-			<header>
-				<h1>{this.props.title}</h1>
+			<header className={styles.header}>
+				<h1 className={styles.h1}>{this.props.title}</h1>
 			</header>
 		);
 	}
