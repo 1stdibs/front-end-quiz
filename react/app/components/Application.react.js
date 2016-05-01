@@ -1,34 +1,54 @@
 import React from 'react';
 import Header from './Header.react';
+import ItemStore from '../stores/ItemStore';
 
 import styles from './Application.css';
 
 const Routes = {
-	BROWSE: {
-		title: 'Browse page',
-		component: require('./browse/ItemList.react')
+	BROWSE() {
+		const ItemList = require('./browse/ItemList.react');
+		return {
+			title: 'Browse page',
+			component: <ItemList/>
+		};
 	},
-	ITEM: {
-		title: 'Item',
-		component: require('./item/Item.react')
+	ITEM() {
+		const Item = require('./item/Item.react');
+		const currentItem = ItemStore.getCurrentItemDetails();
+		return {
+			title: currentItem.title,
+			component: <Item item={currentItem}/>
+		};
 	}
 };
 
 const Application = React.createClass({
 
-	getDefaultProps() {
-		return {
-			route: Routes.BROWSE
-		};
+	componentWillMount() {
+		this.executeRoute(Routes.BROWSE);
+	},
+
+	componentDidMount() {
+		ItemStore.addItemDetailsLoadedListener(this.onItemDetailsLoaded);
+	},
+
+	onItemDetailsLoaded() {
+		this.executeRoute(Routes.ITEM);
+	},
+
+	executeRoute(route) {
+		this.setState({
+			route: route()
+		});
 	},
 
 	render() {
-		const route = this.props.route;
+		const route = this.state.route;
 		const Component = route.component;
 		return (
 			<section className={styles.section}>
 				<Header title={route.title}/>
-				<Component/>
+				{Component}
 			</section>
 		);
 	}

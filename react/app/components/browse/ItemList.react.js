@@ -38,9 +38,10 @@ const ItemList = React.createClass({
 		const items = this.state.items.map((item, index) => (
 			<li key={index} className={styles.li}>
 				<Item
+					id={item.id}
 					imageURI={item.image}
 					price={item.price && item.price.amounts && item.price.amounts.USD}
-					description={item.title}
+					title={item.title}
 					key={index}
 				/>
 			</li>

@@ -5,8 +5,13 @@ const mainRouter = express.Router();
 
 const getItems = function(payload) {
     const start = Number.parseInt(payload.start) || 0;
-    const limit = Number.parseInt(payload.limit) || 9;
-    const items = cachedItems.slice(start, start + limit);
+    const limit = Number.parseInt(payload.limit) || 6;
+    const items = cachedItems.slice(start, start + limit).map(item => ({
+        id: item.id,
+        image: item.image,
+        price: item.price,
+        title: item.title
+    }));
 
     return {
         items: items,
