@@ -8,15 +8,21 @@ const Routes = {
 	BROWSE() {
 		const ItemList = require('./browse/ItemList.react');
 		return {
-			title: 'Browse page',
+			header: {
+				title: 'Browse page'
+			},
 			component: <ItemList/>
 		};
 	},
 	ITEM() {
 		const Item = require('./item/Item.react');
 		const currentItem = ItemStore.getCurrentItemDetails();
+		const seller = currentItem.seller || {};
 		return {
-			title: currentItem.title,
+			header: {
+				logo: seller.logo,
+				title: seller.company
+			},
 			component: <Item item={currentItem}/>
 		};
 	}
@@ -47,7 +53,7 @@ const Application = React.createClass({
 		const Component = route.component;
 		return (
 			<section className={styles.section}>
-				<Header title={route.title}/>
+				<Header	details={route.header}/>
 				{Component}
 			</section>
 		);

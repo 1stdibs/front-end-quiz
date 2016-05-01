@@ -5,13 +5,21 @@ import styles from './Header.css';
 const Header = React.createClass({
 
 	propTypes: {
-		title: React.PropTypes.string.isRequired
+		details: React.PropTypes.object.isRequired
 	},
 
 	render() {
+		const headerDetails = this.props.details;
+		var headerElement;
+		if (headerDetails.logo) {
+			headerElement = (<img className={styles.logo} src={headerDetails.logo} alt={headerDetails.title}/>);
+		} else {
+			headerElement = (<h1 className={styles.h1}>{headerDetails.title}</h1>);
+		}
+
 		return (
 			<header className={styles.header}>
-				<h1 className={styles.h1}>{this.props.title}</h1>
+				{headerElement}
 			</header>
 		);
 	}
