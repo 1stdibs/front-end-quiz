@@ -28,8 +28,14 @@ const ItemList = React.createClass({
 		this.setState(getItemListState());
 	},
 
+	loadMoreClickHandler() {
+		ItemStoreActions.loadItems({
+			start: this.state.items.length
+		});
+	},
+
 	render() {
-		const items = this.state.items.map((item, index) => 
+		const items = this.state.items.map((item, index) => (
 			<li key={index} className={styles.li}>
 				<Item
 					imageURI={item.image}
@@ -38,13 +44,23 @@ const ItemList = React.createClass({
 					key={index}
 				/>
 			</li>
-		);
+		));
+
+		var Button;
+		if (ItemStore.isMoreItemsAvailable()) {
+			Button = (
+				<button type="button" className={styles.button} onClick={this.loadMoreClickHandler}>
+					Load more
+				</button>
+			);
+		}
 
 		return (
 			<div className={styles.container}>
 				<ul className={styles.ul}>
 					{items}
 				</ul>
+				{Button}
 			</div>
 		);
 	}

@@ -5,11 +5,13 @@ import Actions from '../constants/Actions';
 import ServiceUtils from '../utils/ServiceUtils';
 
 var _items = [];
+var _isMoreItemsAvailable = false;
 
 const _actionMap = {
-	[Actions.LOAD_ITEMS]: function() {
-		ServiceUtils.callService('loadItems').then((response) => {
-			_items = response.items;
+	[Actions.LOAD_ITEMS]: function(params) {
+		ServiceUtils.callService('loadItems', params).then((response) => {
+			_items = _items.concat(response.items);
+			_isMoreItemsAvailable = _items.length < response.totalItems;
 			ItemStore.emitItemsLoadedEvent();
 		});
 	}
@@ -18,6 +20,10 @@ const _actionMap = {
 const ItemStore = window.Object.assign({}, EventEmitter.prototype, {
 	getAllItems() {
 		return _items;
+	},
+
+	isMoreItemsAvailable() {
+		return _isMoreItemsAvailable;
 	},
 
 	emitItemsLoadedEvent() {
@@ -31,7 +37,7 @@ const ItemStore = window.Object.assign({}, EventEmitter.prototype, {
 
 // Register callback to handle all updates
 Dispatcher.register(function(action) {
-	_actionMap[action.type]();
+	_actionMap[action.type](action.params);
 });
 
 module.exports = ItemStore;
