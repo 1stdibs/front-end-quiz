@@ -1,0 +1,40 @@
+.container {
+	composes: container from '../../generic.css';
+}
+
+.ul {
+	padding: 10px 15px;
+	width: 100%;
+	box-sizing: border-box;
+	overflow: hidden;
+}
+
+.li {
+	composes: box from '../../generic.css';
+	display: inline-block;
+	width: 280px;
+	height: 280px;
+	margin: 15px;
+	float: left;
+}
+
+.button {
+	text-transform: uppercase;
+	width: 160px;
+	height: 40px;
+	border-radius: 20px;
+	border-style: solid;
+	border-color: rgb(177, 155, 87);
+	border-width: 1px;
+	color: rgb(177, 155, 87);
+	background: white;
+}
+
+.button:hover {
+	border-color: rgb(138, 120, 64);
+	color: rgb(138, 120, 64);
+}
+
+.button:active {
+	background-color: rgb(239, 235, 222);
+}

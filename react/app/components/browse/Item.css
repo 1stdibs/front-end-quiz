@@ -1,0 +1,29 @@
+.a {
+	composes: canFavourite from '../../generic.css';
+	background: white;
+	text-align: center;
+	padding: 0 10px 15px;
+	display: block;
+	height: 100%;
+	width: 100%;
+	box-sizing: border-box;
+	position: relative;
+}
+
+.span {
+	position: absolute;
+	bottom: 15px;
+	left: 10px;
+	line-height: 25px;
+}
+
+.img {
+	width: 80%;
+	max-width: 240px;
+}
+
+.favouriteButton {
+	position: absolute;
+	bottom: 15px;
+	right: 10px;
+}
