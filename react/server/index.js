@@ -1,18 +1,17 @@
 const express = require('express');
-const webpack = require('webpack');
-const webpackDevMiddleware = require('webpack-dev-middleware');
-const config = require('../webpack/webpack.config');
-
-const compiler = webpack(config);
 const app = express();
 const port = process.env.PORT || 3001;
 
-app.use(webpackDevMiddleware(compiler, { publicPath: config.output.publicPath }));
-app.set('views', __dirname + '/views');
-app.set('view engine', 'ejs');
+//define static file directory
+app.use(express.static('static'));
 
 app.use('/', require('./routes/browseRouter'));
 app.use('/item', require('./routes/itemRouter'));
+
+//add route for index page as
+app.get('(/|/browse/*|/item/*)', (req, res) => {
+  res.status(200).sendFile(__dirname + '/views/index.html');
+});
 
 const server = app.listen(port, function () {
     console.log('Example app listening at localhost:%s', port);

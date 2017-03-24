@@ -14,10 +14,10 @@ const getItems = function (payload) {
     };
 };
 
-browseRouter.get('', (req, res) => {
+/*browseRouter.get('', (req, res) => {
     const response = getItems(req.query);
     res.render('browse', response);
-});
+});*/
 
 browseRouter.get('/data', (req, res)=>{
     const response = getItems(req.query);
