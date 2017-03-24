@@ -13,13 +13,15 @@ import Loading from 'app/components/Common/Loading.jsx';
 
 class ListPageContainer extends React.Component {
     componentDidMount() {
-        let startPage = this.props.match.params.page;
-        if(startPage == null)
-            startPage = 1;
-        else {
-            startPage = startPage * 1;
+        if(this.props.productList.length < 1) {
+            let startPage = this.props.match.params.page;
+            if(startPage == null)
+                startPage = 1;
+            else {
+                startPage = startPage * 1;
+            }
+            this.props.actions.getItems(0, startPage);
         }
-        this.props.actions.getItems(0, startPage);
     }
 
     render() {

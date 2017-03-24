@@ -379,11 +379,13 @@ var ListPageContainer = function (_React$Component) {
     _createClass(ListPageContainer, [{
         key: 'componentDidMount',
         value: function componentDidMount() {
-            var startPage = this.props.match.params.page;
-            if (startPage == null) startPage = 1;else {
-                startPage = startPage * 1;
+            if (this.props.productList.length < 1) {
+                var startPage = this.props.match.params.page;
+                if (startPage == null) startPage = 1;else {
+                    startPage = startPage * 1;
+                }
+                this.props.actions.getItems(0, startPage);
             }
-            this.props.actions.getItems(0, startPage);
         }
     }, {
         key: 'render',
