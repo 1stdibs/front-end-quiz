@@ -2,44 +2,34 @@ const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
-    context: __dirname,
-    devtool: 'cheap-module-eval-source-map',
-    entry: {
-        browse: 'entries/browse.js',
-        item: 'entries/item.js'
+    entry : {
+        spa1stdibs : ['./app/entries/spa-entry.js']
     },
-    output: {
-        path: path.join(__dirname, '..'),
-        publicPath: '/bundle/',
-        filename: '[name].js'
+    output : {
+        path :  path.resolve(__dirname, '..', 'static/js'),
+        filename : '[name].js'
     },
-    resolve: {
-        root: path.resolve(__dirname + '/../app'),
-        extensions: ['', '.js', '.jsx', '.css', '.scss']
-    },
-    plugins: [
-        new webpack.optimize.OccurenceOrderPlugin(),
-        new webpack.NoErrorsPlugin()
-    ],
-    module: {
-        loaders: [
+    watch : true,
+    module : {
+        rules : [
             {
-                test: /\.jsx?$/,
-                exclude: /node_modules/,
-                loader: 'babel'
-            },
-            {
-                test: /\.s?css$/,
-                loaders: [
-                    'style-loader',
-                    'css-loader?modules&sourceMap&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
-                    'postcss-loader'
-                ]
+                test : [/\.js$/, /\.jsx$/],
+                loader : 'babel-loader',
+                options : {
+                    cacheDirectory : true
+                },
+                exclude : /node_modules/
             }
         ]
     },
-    postcss: function () {
-        return [require('autoprefixer'), require('precss')];
+    resolve : {
+        extensions : ['.js', '.jsx'],
+        modules : [path.resolve(__dirname, '..'), 'node_modules']
     },
-    stats: { colors: true }
+    plugins : [
+        new webpack.optimize.CommonsChunkPlugin({
+            name : 'vendor',
+            minChunks: ({resource}) => /node_modules/.test(resource)
+        })
+    ]
 };
