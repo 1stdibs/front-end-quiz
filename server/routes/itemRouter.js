@@ -12,7 +12,7 @@ const getItem = function (itemId) {
 itemRouter.get('/:id', (req, res) => {
     const id = req.params.id;
     const item = getItem(id);
-    res.render('item', {item});
+    res.render('index', {item});
 });
 
 itemRouter.get('/:id/data', (req, res) => {

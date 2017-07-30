@@ -16,7 +16,7 @@ const getItems = function (payload) {
 
 browseRouter.get('', (req, res) => {
     const response = getItems(req.query);
-    res.render('browse', response);
+    res.render('index', response);
 });
 
 browseRouter.get('/data', (req, res)=>{

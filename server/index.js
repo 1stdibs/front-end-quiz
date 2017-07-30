@@ -15,5 +15,5 @@ app.use('/', require('./routes/browseRouter'));
 app.use('/item', require('./routes/itemRouter'));
 
 const server = app.listen(port, function () {
-    console.log('Example app listening at localhost:%s', port);
+    console.log('1stdibs app is listening at localhost:%s', port);
 });

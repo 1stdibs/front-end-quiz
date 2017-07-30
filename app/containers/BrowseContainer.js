@@ -1,0 +1,54 @@
+import React from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as ActionCreators from '../actions'
+import Header from '../components/Header';
+import BrowseList from '../components/BrowseList';
+
+class BrowseContainer extends React.Component {
+    constructor(props) {
+        super(props);
+        this.items = [];
+    }
+
+    componentDidMount() {
+        loadData(this.props);
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (this.doMatchParamsDiffer(this.props, nextProps)) {
+            loadData(nextProps);
+        }
+        this.items = nextProps.items;
+    }
+
+    doMatchParamsDiffer(props, nextProps) {
+        return props.match.params.id !== nextProps.match.params.id;
+    }
+
+    render() {
+        return (
+            <div>
+                <Header title='Browse List' />
+                <BrowseList items={this.items} />
+            </div>
+        );
+    }
+}
+
+const loadData = (props) => {
+    props.actions.getProducts();
+};
+
+const mapStateToProps = (state, ownProps) => {
+    return {
+        items: state.app.products.items,
+        totalItems: state.app.products.totalItems
+    };
+};
+
+const mapDispatchToProps = dispatch => ({
+    actions: bindActionCreators(ActionCreators, dispatch)
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(BrowseContainer);

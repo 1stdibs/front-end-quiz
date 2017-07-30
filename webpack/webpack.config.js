@@ -5,8 +5,7 @@ module.exports = {
     context: __dirname,
     devtool: 'cheap-module-eval-source-map',
     entry: {
-        browse: 'entries/browse.js',
-        item: 'entries/item.js'
+        app: 'app.js'
     },
     output: {
         path: path.join(__dirname, '..'),
@@ -26,7 +25,7 @@ module.exports = {
             {
                 test: /\.jsx?$/,
                 exclude: /node_modules/,
-                loader: 'babel'
+                loader: 'babel-loader'
             },
             {
                 test: /\.s?css$/,
