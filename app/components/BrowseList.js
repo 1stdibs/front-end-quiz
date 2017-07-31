@@ -3,11 +3,6 @@ import styled from 'styled-components';
 import { Col, Row } from 'styled-components-flexboxgrid';
 import BrowseItem from './BrowseItem';
 
-const StyledRow = styled(Row)`
-    width: 95%;
-    margin: 0 auto;
-`;
-
 const StyledCol = styled(Col)`
     margin: 1rem;
 `;
@@ -21,7 +16,7 @@ const BrowseList = (props) => {
         <Row>
             {props.items.map((item, index) =>
                 <StyledCol key={index}>
-                    <BrowseItem image={item.image} price={item.price} />
+                    <BrowseItem id={item.id} image={item.image} price={item.price} />
                 </StyledCol>
             )}
         </Row>

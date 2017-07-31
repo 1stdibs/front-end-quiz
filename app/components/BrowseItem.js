@@ -1,12 +1,16 @@
 import React from 'React';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { Col, Row } from 'styled-components-flexboxgrid';
+import { colors, border } from '../utils/style';
 
-const StyledItemContainer = styled.div`
-    background-color: #ffffff;
-    padding: .5rem;
+const StyledItemContainer = styled(Link)`
+    display: block;
+    background-color: ${colors.white};
+    padding: .8rem;
     box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
-    border-radius: 2px;
+    border-radius: ${border.radius};
+    color: ${colors.text.primary};
 `;
 
 const StyledItemImage = styled.img`
@@ -22,13 +26,13 @@ const StyledFavourite = styled(Col)`
 `;
 
 
-const BrowseItem = (props) => {
+const BrowseItem = (props) => {    
     let price;
     if (props.price) {
         price = props.price.amounts.USD;
     }
     return (
-        <StyledItemContainer>
+        <StyledItemContainer to={`/product/${props.id}`}>
             <StyledItemImage src={props.image} />
             <Row>
                 <StyledPrice>{price}</StyledPrice>

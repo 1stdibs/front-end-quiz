@@ -33,12 +33,7 @@ const loadData = (props) => {
     props.actions.getProducts();
 };
 
-const mapStateToProps = (state, ownProps) => {
-    return {
-        items: state.app.products.items,
-        totalItems: state.app.products.totalItems
-    };
-};
+const mapStateToProps = (state, ownProps) => state.app.products;
 
 const mapDispatchToProps = dispatch => ({
     actions: bindActionCreators(ActionCreators, dispatch)
