@@ -18,13 +18,13 @@ const BrowseList = (props) => {
     });
     
     return (
-        <StyledRow>
+        <Row>
             {props.items.map((item, index) =>
                 <StyledCol key={index}>
                     <BrowseItem image={item.image} price={item.price} />
                 </StyledCol>
             )}
-        </StyledRow>
+        </Row>
     );
 }
 

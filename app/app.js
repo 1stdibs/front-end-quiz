@@ -7,7 +7,8 @@ import './assets/css/styles.css';
 WebFont.load({
     google: {
         families: [
-            'Roboto:300,400,500,700'
+            'Roboto:300,400,500,700',
+            'Maven Pro:400,500,700,900'
         ]
     }
 });
