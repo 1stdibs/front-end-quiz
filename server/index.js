@@ -7,7 +7,13 @@ const compiler = webpack(config);
 const app = express();
 const port = process.env.PORT || 3001;
 
-app.use(webpackDevMiddleware(compiler, { publicPath: config.output.publicPath }));
+app.use(webpackDevMiddleware(compiler, {
+    publicPath: config.output.publicPath,
+    stats: {
+        warnings: false
+    }
+}));
+
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 

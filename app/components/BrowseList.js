@@ -8,10 +8,6 @@ const StyledCol = styled(Col)`
 `;
 
 const BrowseList = (props) => {
-    props.items.map(item => {
-        console.log(item);
-    });
-    
     return (
         <Row>
             {props.items.map((item, index) =>

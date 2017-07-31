@@ -11,14 +11,11 @@ const StyledItemContainer = styled(Link)`
     box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
     border-radius: ${border.radius};
     color: ${colors.text.primary};
+    text-decoration: none;
 `;
 
 const StyledItemImage = styled.img`
     text-align: center;
-`;
-
-const StyledPrice = styled(Col)`
-    font-size: 12px;
 `;
 
 const StyledFavourite = styled(Col)`
@@ -32,10 +29,10 @@ const BrowseItem = (props) => {
         price = props.price.amounts.USD;
     }
     return (
-        <StyledItemContainer to={`/product/${props.id}`}>
+        <StyledItemContainer to={`/item/${props.id}`}>
             <StyledItemImage src={props.image} />
             <Row>
-                <StyledPrice>{price}</StyledPrice>
+                <Col>{price}</Col>
                 <StyledFavourite>Love</StyledFavourite>
             </Row>
         </StyledItemContainer>

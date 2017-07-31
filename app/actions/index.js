@@ -8,26 +8,17 @@ const addProducts = data => {
     }
 }
 
-const addProduct = data => {
+const addProduct = (id, data) => {
     return {
-        type: types.ADD_PRODUCTS,
+        type: types.ADD_PRODUCT,
+        id: id,
         payload: data
     }
 }
 
-const fetchProducts = () => {
-    return (dispatch) => api.fetchProducts().then(response => dispatch(addProducts(response.data)))
-}
+const fetchProducts = () => dispatch => api.fetchProducts().then(response => dispatch(addProducts(response.data)));
+const fetchProduct = id => dispatch => api.fetchProduct(id).then(response => dispatch(addProduct(id, response.data)));
 
-const fetchProduct = (id) => {
-    return (dispatch) => api.fetchProduct(id).then(response => dispatch(addProduct(response.data)))
-}
-
-export const getProducts = () => {
-    return (dispatch, getState) => dispatch(fetchProducts());
-}
-
-export const getProduct = (id) => {
-    return (dispatch, getState) => dispatch(fetchProduct(id));
-}
+export const getProducts = () => (dispatch, getState) => dispatch(fetchProducts());
+export const getProduct = (id) => (dispatch, getState) => dispatch(fetchProduct(id));
 

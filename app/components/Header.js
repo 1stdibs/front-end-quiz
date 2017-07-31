@@ -1,10 +1,11 @@
 import React from 'React';
 import styled from 'styled-components';
-import { colors } from '../utils/style';
+import { colors, font } from '../utils/style';
 
 const StyledHeader = styled.h1`
-    font-size: 20px;
-    font-weight: 500;
+    font-size: 16px;
+    font-weight: ${font.weight.bold};
+    text-transform: uppercase;
     color: ${colors.text.primary};
     background-color: ${colors.white};
     text-align: center;
