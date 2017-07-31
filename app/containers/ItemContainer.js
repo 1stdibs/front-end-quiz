@@ -27,11 +27,18 @@ class ItemContainer extends React.Component {
     }
 
     render() {
-
         return (
+            this.item &&
             <div>
                 <Header title='Demo title of product' />
-                <Item id={this.item.id} />
+                <Item
+                    title={this.item.title}
+                    image={this.item.image}
+                    price={this.item.price}
+                    measurements={this.item.measurements}
+                    description={this.item.description}
+                    creators={this.item.creators}
+                />
             </div>
         );
     }

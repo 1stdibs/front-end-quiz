@@ -1,4 +1,5 @@
 import React from 'React';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { Col, Row } from 'styled-components-flexboxgrid';
@@ -37,6 +38,14 @@ const BrowseItem = (props) => {
             </Row>
         </StyledItemContainer>
     );
-}
+};
+
+BrowseItem.PropTypes = {
+    id: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+    price: PropTypes.shape({
+        amounts: PropTypes.objectOf(PropTypes.string)
+    })
+};
 
 export default BrowseItem;

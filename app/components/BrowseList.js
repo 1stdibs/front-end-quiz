@@ -1,4 +1,5 @@
 import React from 'React';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Col, Row } from 'styled-components-flexboxgrid';
 import BrowseItem from './BrowseItem';
@@ -18,5 +19,15 @@ const BrowseList = (props) => {
         </Row>
     );
 }
+
+Item.PropTypes = {
+    items: PropTypes.arrayOf(PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        image: PropTypes.string.isRequired,
+        price: PropTypes.shape({
+            amounts: PropTypes.objectOf(PropTypes.string)
+        })
+    })).isRequired
+};
 
 export default BrowseList;

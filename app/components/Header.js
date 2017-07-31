@@ -1,4 +1,5 @@
 import React from 'React';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { colors, font } from '../utils/style';
 
@@ -18,6 +19,8 @@ const Header = (props) => {
     return (
         <StyledHeader>{props.title}</StyledHeader>
     );
-}
+};
+
+Header.PropTypes = { title: PropTypes.string.isRequired };
 
 export default Header;
