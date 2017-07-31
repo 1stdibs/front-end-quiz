@@ -16,14 +16,7 @@ class BrowseContainer extends React.Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        if (this.doMatchParamsDiffer(this.props, nextProps)) {
-            loadData(nextProps);
-        }
         this.items = nextProps.items;
-    }
-
-    doMatchParamsDiffer(props, nextProps) {
-        return props.match.params.id !== nextProps.match.params.id;
     }
 
     render() {
