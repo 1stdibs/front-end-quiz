@@ -26,18 +26,21 @@ class ItemContainer extends React.Component {
         return props.match.params.id !== nextProps.match.params.id;
     }
 
-    render() {
+    render() {        
         return (
             this.item &&
             <div>
-                <Header title='Demo title of product' />
+                <Header title={this.item.seller.company} match={this.props.match} />
                 <Item
+                    id={this.item.id}
                     title={this.item.title}
                     image={this.item.image}
                     price={this.item.price}
                     measurements={this.item.measurements}
                     description={this.item.description}
                     creators={this.item.creators}
+                    isLiked={this.item.isLiked}
+                    onClick={this.props.actions.toggleLikeProduct}
                 />
             </div>
         );
@@ -48,7 +51,11 @@ const loadData = (props) => {
     props.actions.getProduct(props.match.params.id);
 };
 
-const mapStateToProps = (state, ownProps) => state.app.product[ownProps.match.params.id];
+const mapStateToProps = (state, ownProps) => {
+    return {
+        item: state.app.product[ownProps.match.params.id]
+    }
+};
 
 const mapDispatchToProps = dispatch => ({
     actions: bindActionCreators(ActionCreators, dispatch)

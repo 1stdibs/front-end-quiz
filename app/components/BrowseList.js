@@ -13,14 +13,20 @@ const BrowseList = (props) => {
         <Row>
             {props.items.map((item, index) =>
                 <StyledCol key={index}>
-                    <BrowseItem id={item.id} image={item.image} price={item.price} />
+                    <BrowseItem
+                        id={item.id}
+                        image={item.image}
+                        price={item.price}
+                        isLiked={item.isLiked}
+                        onClick={props.toggleLike}
+                    />
                 </StyledCol>
             )}
         </Row>
     );
 }
 
-Item.PropTypes = {
+BrowseList.PropTypes = {
     items: PropTypes.arrayOf(PropTypes.shape({
         id: PropTypes.string.isRequired,
         image: PropTypes.string.isRequired,

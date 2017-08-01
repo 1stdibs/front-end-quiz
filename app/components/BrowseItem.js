@@ -3,40 +3,55 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { Col, Row } from 'styled-components-flexboxgrid';
-import { colors, border } from '../utils/style';
+import { colors } from '../utils/style';
+import ShadowBox from './ShadowBox';
+import Heart from './Heart';
 
 const StyledItemContainer = styled(Link)`
     display: block;
-    background-color: ${colors.white};
-    padding: .8rem;
-    box-shadow: 0 1px 1px rgba(0, 0, 0, .1);
-    border-radius: ${border.radius};
     color: ${colors.text.primary};
     text-decoration: none;
-`;
-
-const StyledItemImage = styled.img`
     text-align: center;
 `;
 
-const StyledFavourite = styled(Col)`
-    text-align: right;
+const StyledPrice = styled(Col)`
+    text-align: left;
 `;
 
+const StyledFavouriteCol = styled(Col)`
+    position: relative;
+`;
 
-const BrowseItem = (props) => {    
-    let price;
-    if (props.price) {
-        price = props.price.amounts.USD;
-    }
+const StyledHeart = styled(Heart)`
+    position: absolute;
+    right: 1rem;
+    top: .5rem;
+    z-index: 1;
+    cursor: pointer;
+`;
+
+const getPrice = price => price ? price.amounts.USD : 'Price Upon Request';
+
+const toggleLike = (action, id, event) => {
+    event.preventDefault();
+    action(id);
+};
+
+const BrowseItem = (props) => {            
     return (
-        <StyledItemContainer to={`/item/${props.id}`}>
-            <StyledItemImage src={props.image} />
-            <Row>
-                <Col>{price}</Col>
-                <StyledFavourite>Love</StyledFavourite>
-            </Row>
-        </StyledItemContainer>
+        <ShadowBox>
+            <StyledItemContainer to={`/item/${props.id}`}>
+                <img src={props.image} />
+                <Row>
+                    <StyledPrice>
+                        {getPrice(props.price)}
+                    </StyledPrice>
+                    <StyledFavouriteCol>
+                        <StyledHeart active={props.isLiked} onClick={toggleLike.bind(this, props.onClick, props.id)} />
+                    </StyledFavouriteCol>
+                </Row>
+            </StyledItemContainer>
+        </ShadowBox>
     );
 };
 
@@ -45,7 +60,8 @@ BrowseItem.PropTypes = {
     image: PropTypes.string.isRequired,
     price: PropTypes.shape({
         amounts: PropTypes.objectOf(PropTypes.string)
-    })
+    }),
+    isLiked: PropTypes.bool.isRequired
 };
 
 export default BrowseItem;

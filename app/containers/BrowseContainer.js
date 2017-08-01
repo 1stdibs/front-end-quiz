@@ -15,7 +15,7 @@ class BrowseContainer extends React.Component {
         loadData(this.props);
     }
 
-    componentWillReceiveProps(nextProps) {
+    componentWillReceiveProps(nextProps) {        
         this.items = nextProps.items;
     }
 
@@ -23,14 +23,14 @@ class BrowseContainer extends React.Component {
         return (
             <div>
                 <Header title='Browse List' />
-                <BrowseList items={this.items} />
+                <BrowseList items={this.items} toggleLike={this.props.actions.toggleLikeProduct} />
             </div>
         );
     }
 }
 
 const loadData = (props) => {
-    props.actions.getProducts();
+    props.actions.getProducts(0, 100);
 };
 
 const mapStateToProps = (state, ownProps) => state.app.products;

@@ -1,27 +1,43 @@
 const express = require('express');
-const cachedItems = require('../data/items.json');
+const file = `${process.cwd()}/server/data/items.json`; 
+const encoding = 'utf8';
+const fs = require('fs');
 
 const browseRouter = express.Router();
 
-const getItems = function (payload) {
+const readFile = (callback) => fs.readFile(file, encoding, callback);
+
+const getItems = function (data, payload) {
     const start = Number.parseInt(payload.start) || 0;
     const limit = Number.parseInt(payload.limit) || 9;
-    const items = cachedItems.slice(start, start + limit);
+    const items = data.slice(start, start + limit);
 
     return {
         items: items,
-        totalItems: cachedItems.length
+        totalItems: data.length
     };
 };
 
 browseRouter.get('', (req, res) => {
-    const response = getItems(req.query);
-    res.render('index', response);
+    readFile((err, data) => {
+        if (err) {
+            throw new Error(err);
+        } else {
+            const response = getItems(JSON.parse(data), req.query);
+            res.render('index', response);
+        }
+    });
 });
 
-browseRouter.get('/data', (req, res)=>{
-    const response = getItems(req.query);
-    res.status(200).json(response);
+browseRouter.get('/data', (req, res) => {
+    readFile((err, data) => {
+        if (err) {
+            throw new Error(err);
+        } else {
+            const response = getItems(JSON.parse(data), req.query);
+            res.status(200).json(response);
+        }
+    });
 });
 
 module.exports = browseRouter;
