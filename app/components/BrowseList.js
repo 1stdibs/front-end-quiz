@@ -1,4 +1,4 @@
-import React from 'React';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Col, Row } from 'styled-components-flexboxgrid';
@@ -26,7 +26,9 @@ const BrowseList = (props) => {
     );
 }
 
-BrowseList.PropTypes = {
+export default BrowseList;
+
+BrowseList.propTypes = {
     items: PropTypes.arrayOf(PropTypes.shape({
         id: PropTypes.string.isRequired,
         image: PropTypes.string.isRequired,
@@ -35,5 +37,3 @@ BrowseList.PropTypes = {
         })
     })).isRequired
 };
-
-export default BrowseList;

@@ -1,4 +1,4 @@
-import React from 'React';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
@@ -30,7 +30,7 @@ const StyledHeart = styled(Heart)`
     cursor: pointer;
 `;
 
-const getPrice = price => price ? price.amounts.USD : 'Price Upon Request';
+const getPrice = (price) => price ? price.amounts.USD : 'Price Upon Request';
 
 const toggleLike = (action, id, event) => {
     event.preventDefault();
@@ -55,7 +55,9 @@ const BrowseItem = (props) => {
     );
 };
 
-BrowseItem.PropTypes = {
+export default BrowseItem;
+
+BrowseItem.propTypes = {
     id: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,
     price: PropTypes.shape({
@@ -63,5 +65,3 @@ BrowseItem.PropTypes = {
     }),
     isLiked: PropTypes.bool.isRequired
 };
-
-export default BrowseItem;

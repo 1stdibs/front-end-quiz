@@ -1,4 +1,4 @@
-import React from 'React';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
@@ -57,9 +57,9 @@ const Header = (props) => {
     );
 };
 
-Header.PropTypes = {
+export default Header;
+
+Header.propTypes = {
     title: PropTypes.string.isRequired,
     match: PropTypes.object
 };
-
-export default Header;

@@ -14,3 +14,6 @@ body {
 a {
     color: #bea561;
 }
+a:hover {
+    color: #91773b;
+}
