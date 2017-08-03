@@ -1,0 +1,19 @@
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: 'Maven Pro', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    font-size: 1.4rem;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #444444;
+}
+
+a {
+    color: #bea561;
+}
+a:hover {
+    color: #91773b;
+}

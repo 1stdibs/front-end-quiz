@@ -1,0 +1,3 @@
+export const ADD_PRODUCTS = 'ADD_PRODUCTS';
+export const ADD_PRODUCT = 'ADD_PRODUCT';
+export const TOGGLE_LIKE_PRODUCT = 'TOGGLE_LIKE_PRODUCT';

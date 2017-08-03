@@ -1,0 +1,63 @@
+{
+    "name": "1stdibs-front-end-quiz",
+    "version": "1.0.0",
+    "description": "1stdibs Front-end quiz based on React, Flux, Node",
+    "main": "index.js",
+    "scripts": {
+        "cleaninstall": "rm -rf ./node_modules && npm cache clean && npm install",
+        "build": "webpack -d --progress --watch --config webpack.config.js",
+        "dev": "webpack-dashboard -- node server"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/1stdibs/front-end-quiz.git"
+    },
+    "keywords": [
+        "1stdibs",
+        "1stdibs.com",
+        "React",
+        "Node",
+        "Front-end quiz"
+    ],
+    "author": "1stdibs",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/1stdibs/front-end-quiz/issues"
+    },
+    "homepage": "https://github.com/1stdibs/front-end-quiz#readme",
+    "dependencies": {
+        "axios": "^0.16.2",
+        "babel-plugin-transform-object-rest-spread": "^6.23.0",
+        "chalk": "^2.0.1",
+        "connect-history-api-fallback": "^1.3.0",
+        "ejs": "^2.4.1",
+        "express": "^4.15.3",
+        "file-loader": "^1.0.0",
+        "react": "15.4.2",
+        "react-dom": "15.4.2",
+        "react-hot-loader": "next",
+        "react-redux": "^5.0.4",
+        "react-router-dom": "^4.1.1",
+        "react-router-redux": "next",
+        "redux": "^3.6.0",
+        "redux-logger": "^3.0.1",
+        "redux-thunk": "^2.2.0",
+        "styled-components": "^2.1.1",
+        "styled-components-flexboxgrid": "^0.1.0",
+        "webfontloader": "^1.6.28"
+    },
+    "devDependencies": {
+        "babel-core": "^6.25.0",
+        "babel-loader": "^7.1.1",
+        "babel-preset-es2015": "^6.5.0",
+        "babel-preset-react": "^6.5.0",
+        "css-loader": "^0.23.1",
+        "html-webpack-plugin": "^2.30.1",
+        "postcss-loader": "^2.0.6",
+        "style-loader": "^0.18.2",
+        "webpack": "^3.4.1",
+        "webpack-dashboard": "^0.4.0",
+        "webpack-dev-middleware": "^1.12.0",
+        "webpack-hot-middleware": "^2.18.2"
+    }
+}
