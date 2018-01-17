@@ -12,12 +12,6 @@ const getItem = function (itemId) {
 itemRouter.get('/:id', (req, res) => {
     const id = req.params.id;
     const item = getItem(id);
-    res.render('item', {item});
-});
-
-itemRouter.get('/:id/data', (req, res) => {
-    const id = req.params.id;
-    const item = getItem(id);
     res.status(200).json(item);
 });
 
