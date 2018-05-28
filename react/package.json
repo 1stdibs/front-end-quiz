@@ -28,13 +28,13 @@
     },
     "homepage": "https://github.com/1stdibs/front-end-quiz#readme",
     "dependencies": {
-        "express": "^4.16.2",
-        "react": "^16.2.0",
-        "react-dom": "^16.2.0",
-        "react-scripts": "1.1.0"
+        "express": "^4.16.3",
+        "react": "^16.4.0",
+        "react-dom": "^16.4.0",
+        "react-scripts": "1.1.4"
     },
     "devDependencies": {
-        "nodemon": "^1.14.11"
+        "nodemon": "^1.17.5"
     },
     "proxy": "http://localhost:3001"
 }

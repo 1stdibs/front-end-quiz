@@ -34,7 +34,7 @@ Webpack will compile all your CSS and JS assets.
 **Bonus points:**
 Add item favoriting:
 - Item can be added and removed to/from favorites from both pages by clicking on the `heart` icon
-- Its up to you were you store the data about favorited items (server, db, browser, file or your own solution)
+- Favorited items should be stored server side (db, file or your own solution)
 - Examples: [favorite on browse](./examples/favorite-browse.png) and [favorite on item](./examples/favorite-item.png)
 
 ### Other Notes:
