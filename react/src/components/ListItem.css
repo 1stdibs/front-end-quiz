@@ -1,0 +1,16 @@
+.listItem {
+	margin-bottom: 15px;
+}
+
+.listItem .card {
+	padding: 0px 15px;
+}
+
+.listItem a {
+	cursor: pointer;
+}
+
+.listItem .card .card-body {
+	padding: 15px 0px;
+	font-size: 20px;
+}

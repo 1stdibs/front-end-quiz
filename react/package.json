@@ -28,10 +28,17 @@
     },
     "homepage": "https://github.com/1stdibs/front-end-quiz#readme",
     "dependencies": {
+        "bootstrap": "^4.1.2",
+        "cors": "^2.8.4",
         "express": "^4.16.3",
+        "font-awesome": "^4.7.0",
+        "npm": "^6.1.0",
         "react": "^16.4.0",
         "react-dom": "^16.4.0",
-        "react-scripts": "1.1.4"
+        "react-redux": "^5.0.7",
+        "react-scripts": "1.1.4",
+        "redux": "^4.0.0",
+        "redux-thunk": "^2.3.0"
     },
     "devDependencies": {
         "nodemon": "^1.17.5"

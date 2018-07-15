@@ -1,0 +1,102 @@
+.item {
+
+}
+
+/* Header */
+.item .itemHeader {
+	background-color: white;
+	border-bottom: 1px solid rgba(0,0,0,.125);
+	margin-bottom: 15px;
+}
+
+.item .itemHeader h1 {
+	padding: 15px;
+	font-size: 2rem;
+}
+
+.item .itemHeader button.backButton {
+	position: absolute;
+	left: 30px;
+	top: 15px;
+	line-height: 2rem;
+	background: transparent;
+	border: none;
+	color: orange;
+}
+
+/* Favorite override */
+.item .favoriteButton {
+	top: 0px;
+	bottom: unset;
+	right: 0px;
+}
+
+/* Body */
+.item .itemBody {
+	padding: 30px 15px 0px 30px;
+}
+
+.item .itemBody .card {
+	padding: 15px 15px;
+}
+
+.item .itemBody .card h1 {
+	font-size: 2rem;
+	margin-bottom: 10px;
+}
+
+.item .itemBody .card h4 {
+	font-size: 1.5rem;
+	margin-bottom: 10px;
+	color: gray;
+}
+
+.item .itemBody .card p {
+	margin-bottom: 10px;
+}
+
+.item .itemBody .card.price {
+	border-bottom-left-radius: 0px;
+	border-bottom-right-radius: 0px;
+	border-bottom: none;
+}
+
+.item .itemBody .card.buttons {
+	padding: 0px;
+	display: block;
+	border-top-left-radius: 0px;
+	border-top-right-radius: 0px;
+	border:none;
+}
+
+.item .itemBody .card.buttons > button {
+	display: inline-block;
+	width: 50%;
+	border-top-left-radius: 0px;
+	border-top-right-radius: 0px;
+	background-color: transparent;
+	color: orange;
+	border-color: rgba(0,0,0,.125);
+}
+
+.item .itemBody .card.buttons > button:first-child {
+	border-right: none;
+}
+
+.item .itemBody .card.description {
+	margin-top: 15px;
+}
+
+	@media(max-width: 767px) {
+		.item .itemBody {
+			padding: 0px 15px 30px 15px;
+		}
+
+		.item .itemBody div.contentContainer > div.row > div.col-12 {
+			padding: 0;
+		}
+
+		.item .itemBody div.contentContainer > div.row > div.col-12:first-child {
+			margin-top: -1px;
+		}
+	}
