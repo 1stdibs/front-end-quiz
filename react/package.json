@@ -29,8 +29,8 @@
     "homepage": "https://github.com/1stdibs/front-end-quiz#readme",
     "dependencies": {
         "express": "^4.16.3",
-        "react": "^16.4.0",
-        "react-dom": "^16.4.0",
+        "react": "^16.8.6",
+        "react-dom": "^16.8.6",
         "react-scripts": "1.1.4"
     },
     "devDependencies": {

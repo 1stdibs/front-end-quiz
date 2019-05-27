@@ -6,9 +6,9 @@ Using React and Flux architecture render Single Page Application with these page
 
 ### Server side notes
 Steps to run local server:
-- `npm install` - install dependencies
-- `npm run start` - run webpack server
-- `npm run dev` - run Express.js server
+- `yarn install` - install dependencies
+- `yarn start` - run webpack server
+- `yarn dev` - run Express.js server
 
 At this point you should be able to access `localhost:3000` in your browser.
 
@@ -39,7 +39,8 @@ Add item favoriting:
 
 ### Other Notes:
 - Initial App setup is done with [Create React App](https://github.com/facebookincubator/create-react-app)
-- You can use any [Flux](https://facebook.github.io/flux/) framework, Redux is preferable, but not a must 
+- You can use any [Flux](https://facebook.github.io/flux/) framework if needed, Redux is preferable, but not a must
+- [React Hooks](https://reactjs.org/docs/hooks-intro.html) are more than welcome
 - You can use [ES6 features](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#supported-language-features-and-polyfills)
 - You can change Create React App or Express.js configs/setup as you like
 - You can use any framework for CSS or just write your own styles. Don't need to totally match given examples
