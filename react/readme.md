@@ -39,8 +39,7 @@ Add item favoriting:
 
 ### Other Notes:
 - Initial App setup is done with [Create React App](https://github.com/facebookincubator/create-react-app)
-- You can use any [Flux](https://facebook.github.io/flux/) framework if needed, Redux is preferable, but not a must
-- [React Hooks](https://reactjs.org/docs/hooks-intro.html) are more than welcome
-- You can use [ES6 features](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#supported-language-features-and-polyfills)
+- We prefer React code written with function components and [React Hooks](https://reactjs.org/docs/hooks-intro.html)
+- You can use ES2020 language features
 - You can change Create React App or Express.js configs/setup as you like
 - You can use any framework for CSS or just write your own styles. Don't need to totally match given examples

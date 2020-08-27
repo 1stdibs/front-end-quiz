@@ -26,12 +26,11 @@
     "bugs": {
         "url": "https://github.com/1stdibs/front-end-quiz/issues"
     },
-    "homepage": "https://github.com/1stdibs/front-end-quiz#readme",
     "dependencies": {
         "express": "^4.16.3",
-        "react": "^16.8.6",
-        "react-dom": "^16.8.6",
-        "react-scripts": "^3.1.1"
+        "react": "^16.13.1",
+        "react-dom": "^16.13.1",
+        "react-scripts": "^3.4.3"
     },
     "devDependencies": {
         "nodemon": "^1.17.5"
