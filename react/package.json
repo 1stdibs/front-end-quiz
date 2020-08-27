@@ -26,7 +26,6 @@
     "bugs": {
         "url": "https://github.com/1stdibs/front-end-quiz/issues"
     },
-    "homepage": "https://github.com/1stdibs/front-end-quiz#readme",
     "dependencies": {
         "express": "^4.16.3",
         "react": "^16.13.1",
