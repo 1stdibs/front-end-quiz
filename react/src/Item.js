@@ -17,8 +17,13 @@ const Item = ({ item }) => {
   return (
     <>
       <div className="card">
-        <img src={item.image} />
-        <p>{price_usd}</p>
+        <div className="card-image">
+          <img src={item.image} />
+        </div>
+        <div className="card-body">
+          <p>{price_usd}</p>
+        </div>
+        
       </div>
     </>
   );

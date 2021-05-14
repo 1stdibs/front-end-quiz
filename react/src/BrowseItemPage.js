@@ -2,10 +2,10 @@ import React from 'react';
 
 import Item from "./Item"
 
-const BrowseItemPage = ({ items }) => {
+const BrowseItemPage = ({ items, loadMoreItems }) => {
 
   console.log(items)
-
+  // https://scotch.io/courses/10-react-challenges-beginner/loop-over-and-display-data-with-jsx
   return (
     <>
       <h1>Browse Items</h1>
@@ -17,7 +17,7 @@ const BrowseItemPage = ({ items }) => {
                 />
         })}
       </div>
-      <button>Load More</button>
+      <button onClick={loadMoreItems}>Load More</button>
     </>
   );
 }

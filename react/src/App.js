@@ -12,8 +12,8 @@ import {
 
 function App() {
 
-  const  [ hasError, setErrors ] =  useState(false)
-  const  [ items, setItems ]= useState({})
+  const  [ items, setItems ]= useState({});
+  const  [ hasError, setErrors ] =  useState(false);
 
   async function fetchItemsData() {
     const items = await fetchItems()
@@ -24,6 +24,10 @@ function App() {
       .catch(err => setErrors(err));
   } 
 
+  async function loadMoreItems(){
+    console.log('fetching more items')
+  }
+
   useEffect(() => {
     fetchItemsData();
   }, []); 
@@ -31,7 +35,7 @@ function App() {
   return(
     <div className="container">
       <Switch>
-        <Route path='/' render={() => <BrowseItemsPage items={items} /> }/>
+        <Route path='/' render={() => <BrowseItemsPage items={items} loadMoreItems={loadMoreItems} /> }/>
         <Route path='/item' render={() => <ItemPage items={items} /> }/>
       </Switch>
     </div>  
