@@ -1,3 +1,26 @@
-.App-welcome {
+.browse {
   text-align: center;
+}
+
+.main {
+  display: grid;
+  grid-template-columns: 300px 300px 300px;
+  grid-template-rows: 300px 300px 300px;
+  grid-column-gap: 1em;
+  grid-row-gap: 1em;
+}
+
+.card {
+  border: 1px solid #ececec;
+  border-radius: 2px;
+  text-align: center;
+}
+
+button {
+  background-color: #FFF;
+  border: 1px solid #D6C98D;
+  border-radius:2em;
+  padding:.5em 1em;
+  min-width:10em;
+  color: #D6C98D;
 }
