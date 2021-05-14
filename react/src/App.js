@@ -31,7 +31,7 @@ function App() {
   return(
     <div className="container">
       <Switch>
-        <Route path='/browse' render={() => <BrowseItemsPage items={items} /> }/>
+        <Route path='/' render={() => <BrowseItemsPage items={items} /> }/>
         <Route path='/item' render={() => <ItemPage items={items} /> }/>
       </Switch>
     </div>  
